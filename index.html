@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+    <title>Chatter</title>
+</head>
+
+<body>
+
+
+
+    <section>
+
+        <div class="form-container bg-white h-105 w-[400px] rounded-2xl" id="form-container">
+
+            <div class="register-container">
+
+                <div class="logo-form flex items-center justify-center">
+                </div>
+
+                <div class="top-form flex flex-col gap-1">
+                    <h2 class="text-[20px] text-green-600">Login or Create an account</h2>
+                </div>
+
+                <div class="email-password flex flex-col gap-4">
+                    <!-- <input type="text" placeholder="Username" id="username"
+                        class="border border border-gray-300 h-9 rounded-lg outline-none"> -->
+                    <input type="text" placeholder="Email Address" id="email"
+                        class="border border border-gray-300 h-9 rounded-lg outline-none">
+                    <input type="text" placeholder="Password" id="password"
+                        class="border border border-gray-300 h-9 rounded-lg outline-none">
+                </div>
+
+                <div class="signup-login flex flex-col w-full gap-4">
+                    <button class="bg-green-400 text-white cursor-pointer" id="signup">Sign Up</button>
+                    <button class="bg-green-400 text-white  cursor-pointer" id="login">Login</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <div class="w-[650px] min-h-[400px] bg-white rounded-2xl container-content" style="display: none;"
+            id="container-content">
+
+            <div class="main-section">
+
+                <div class="top-section flex items-center justify-between">
+                    <div class="logo">
+                    </div>
+
+                    <div class="profile-section relative">
+                        <img src="./images/profile-pic/user.png" alt="" onclick="showDropDown()" class="cursor-pointer">
+                        <div id="dropDown" class="dropdown-content">
+                            <a href="#">Setting</a>
+                            <a class="cursor-pointer hidden" id="logout-button">Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-section relative">
+                    <h1 class="text-[26px] font-semibold">Create Post</h1>
+                    <textarea name="" id="userinput"
+                        class="bg-white w-full rounded-lg border border-1 border-gray-400 outline-none" rows="4"
+                        placeholder="What's on your mind?"></textarea>
+
+                    <div class="buttons flex items-center justify-between">
+                        <!-- <button
+                            class="border border-1 border-gray-400 text-black rounded-lg img-button cursor-pointer">Add
+                            Image</button> -->
+
+                        <div>
+                            <label for="file" class="bg-blue-400 text-white add-img rounded-md cursor-pointer" id="img-add-btn">Add Image</label>
+                            <input type="file" name="file" id="file">
+
+                            <div class="img-preview border w-25 h-25 hidden" id="img-preview">
+                                
+                            </div>
+
+                        </div>
+
+
+                        <button class="bg-blue-400 text-white rounded-lg post-button rounded-md cursor-pointer"
+                            id="addPost">Post</button>
+                    </div>
+
+
+                </div>
+
+                <div class="feed-section">
+                    <h1 class="text-[26px] font-semibold">Feed</h1>
+
+                    <div id="user-feed">
+
+                        <!-- <div class="post-card border border-1 border-gray-300 rounded-md">
+                            <div class="img-name-sect flex items-center gap-3">
+                                <img src="./images/profile-pic/user.png" alt="">
+                                <div class="name">
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="content">
+                                
+                            </div>
+    
+                            <div class="buttons-card flex items-center justify-end gap-3">
+                                <div class="flex items-center gap-1">
+                                    <i class="fa-regular fa-heart text-[20px]"></i>
+                                    
+                                </div>
+                                <i class="fa-solid fa-trash text-[20px] cursor-pointer"></i>
+                            </div>
+                        </div> -->
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <script>
+
+        function showDropDown() {
+            document.getElementById("dropDown").classList.toggle("show")
+        }
+
+        window.onclick = (e) => {
+            if (!e.target.matches("img")) {
+                let dropDowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropDowns.length; i++) {
+                    let openDropDown = dropDowns[i];
+                    if (openDropDown.classList.contains("show")) {
+                        openDropDown.classList.remove("show")
+                    }
+                }
+            }
+        }
+
+    </script>
+
+
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
